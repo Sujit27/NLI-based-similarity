@@ -7,17 +7,19 @@ from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn 
 from fastapi.responses import HTMLResponse
+from middlewares.exception import ExceptionHandlerMiddleware
 
 from similarity_score import SimilarityScorer
 from schema import Request,Response
 
 config = configparser.ConfigParser()
-config.read('config.ini')
+config.read('config/config.ini')
 
 model_path = config.get('PATH','model')
 scorer = SimilarityScorer(model_path)
 
 app = FastAPI()
+app.add_middleware(ExceptionHandlerMiddleware)
 
 @app.post("/findSimilarity")
 async def findSimilarity(item: Request) -> Response:
