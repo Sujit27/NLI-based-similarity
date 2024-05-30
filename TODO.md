@@ -2,7 +2,7 @@
 2. Add pytest to test input schema, sanity checks
 3. Add logging
 4. Structure code into directories
-5. Add GPU compatibility
+5. Add Crossencoder
 6. Add embedding model training code on GPU
 7. Add evaluation
 8. Add MLFlow
