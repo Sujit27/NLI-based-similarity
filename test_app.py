@@ -9,12 +9,12 @@ def test_whether_similarity_of_exact_same_strings_is_one():
     assert response.status_code == 200
     assert response.json()["similarity_score"] == 1.0
 
-def test_whether_similarity_with_blank_not_zero():
+def test_whether_similarity_with_blank_is_zero():
     response = client.post("/findSimilarity",json={"sent1": "good","sent2": ""})
     assert response.status_code == 200
     assert response.json()["similarity_score"] < 0.01
 
-def test_whether_similarity_with_special_character_not_zero():
+def test_whether_similarity_with_special_character_is_zero():
     response = client.post("/findSimilarity",json={"sent1": "good","sent2": "#"})
     assert response.status_code == 200
     assert response.json()["similarity_score"] < 0.01
