@@ -1,6 +1,6 @@
 * Add Exception Handling in API
 ~~* Add pytest to test input schema, sanity checks~~
-* Implement cross encoder model for scoring
+~~* Implement cross encoder model for scoring~~
 * Add logging
 * Structure code into directories
 * Add Crossencoder

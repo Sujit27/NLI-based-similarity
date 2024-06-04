@@ -9,14 +9,15 @@ import uvicorn
 from fastapi.responses import HTMLResponse
 from middlewares.exception import ExceptionHandlerMiddleware
 
-from similarity_score import SimilarityScorer
+from inference import SimilarityScorer
 from schema import Request,Response
 
 config = configparser.ConfigParser()
 config.read('config/config.ini')
 
 model_path = config.get('PATH','model')
-scorer = SimilarityScorer(model_path)
+model_type = int(config.get('MODEL','type'))
+scorer = SimilarityScorer(model_path,model_type)
 
 app = FastAPI()
 app.add_middleware(ExceptionHandlerMiddleware)
